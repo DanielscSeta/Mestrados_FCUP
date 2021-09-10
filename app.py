@@ -1,27 +1,63 @@
 # save this as app.py
-from flask import Flask, request, render_template, session, redirect
-import numpy as np
-import pandas as pd
+from flask import Flask, request, render_template, session, redirect, request
+from data import *
+from functions import *
+import requests
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder="templates")
 
-df = pd.DataFrame({'A': [0, 1, 2, 3, 4],
-                   'B': [5, 6, 7, 8, 9],
-                   'C': ['a', 'b', 'c--', 'd', 'e']})
+###### Gerar nova imagem de plot ######
+# @app.route('/plot')
+# def chartTest():
+#     Sobrantes_df = tab_sobrantes()
+#     plt.figure(figsize=(15,8))
+#     plt.bar(Sobrantes_df.index, Sobrantes_df['Sobrantes'])
+#     plt.xticks(rotation=90)
+#     # plt.savefig('./static/images/new_plot.png')
+#     plt.savefig('./static/images/new_plot.png',bbox_inches='tight')
 
-cashtag_tab = ['sup','lol']
+#     return render_template('plot.html', name = 'new_plot', url ='/static/images/new_plot.png')
+@app.route('/suggestions')
+def suggestions():
+    text = request.args.get('jsdata')
+    print(text)
+
+    suggestions_list = stalker(text)
+
+    return render_template('suggestions.html', suggestions=suggestions_list)
+
+
 
 @app.route('/', methods=("POST", "GET"))
 def html_table():
+    if request.form.get('comp_select') is not None:
+        select = request.form.get('comp_select')
+        return(redirect(select)) 
 
-    return render_template('index.html',  tables=[df.to_html(classes='data')], titles=df.columns.values ,data=cashtag_tab)
+    Sobrantes_df = tab_sobrantes()
+    header = Sobrantes_df.columns.values.tolist()
+    header.insert(0,Sobrantes_df.index.name)
+    return render_template('index.html', data=Mestrados, header1=header, data1=Sobrantes_df.to_records(index=True),
+    url ='/static/images/new_plot.png')
+
+# @app.route("/test" , methods=['GET', 'POST'])
+# def test():
+#       select = request.form.get('comp_select')
+#       return(redirect(select)) 
+
+    
+
+@app.route('/<var>', methods=("POST", "GET"))
+def company(var):
+    candidatos = d["df_2_{0}".format(var)]
+    header = candidatos.columns.values.tolist()
+    header.insert(0,candidatos.index.name)
+
+    # return render_template('simple.html', var=var.replace("_", " "), header = df_sup.columns,  data = lista[var].values)
+    return render_template('simple.html', select=Mestrados, var=var, data=table1(var), data2=table2(var),
+     header=header , data3=candidatos.to_records(index=True) )
 
 
-for i in range(0,(len(cashtag_tab)-1)) :
-    var=cashtag_tab[i]
-    @app.route('/<var>')
-    def company(var):
-        return render_template('simple.html')
 
 if __name__ == '__main__':
     app.run(debug=True,host='0.0.0.0')

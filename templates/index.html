@@ -37,6 +37,22 @@
     thead th {
       cursor: pointer;
     }
+    .button {
+        background-color: #dee2e6; 
+        border: none;
+        color: #444;
+        padding: 5px 8px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 12px;
+    }
+
+    .center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
   </style>
 
 </head>
@@ -44,17 +60,76 @@
 <body>
   <div class="container">
 
-    <h1 class="text-center mt-5 mb-5">jQuery Auto Tables Plugin Example</h1>
-    <p class="lead text-center">An easy-to-use jQuery plugin for data-rich HTML tables that makes it possible to sort
-      table elements by each column and search/filter table rows based on search keywords.</p>
+    <h1 class="text-center mt-5 mb-5">Mestrados FCUP 2021</h1>
+    <!-- <p class="lead text-center">An easy-to-use jQuery plugin for data-rich HTML tables that makes it possible to sort
+      table elements by each column and search/filter table rows based on search keywords.</p> -->
       
-      {% for item in data %}
-        <a href = "{{ item }}"> {{ item }} </a>
-        {% endfor %}
+        <form class="form-inline" method="POST" style="margin-bottom: 50px;justify-content: center;" >
+          <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon" style="align-self: center;margin-right: 20px;">Please select</span>
+                    <select name="comp_select" class="selectpicker form-control">
+                      {% for o in data %}
+                      <option value="{{ o }}">{{ o }}</option>
+                      {% endfor %}
+                    </select>
+            </div>
+            <button type="submit" class="button" style="margin-left: 20px;">Go</button>
+          </div>
+        </form>
+
+        <form class="form-inline" method="POST" style="margin-bottom: 50px;justify-content: center;" >
+          <input type="text" id="inputUsername"></input>
     
+          <button type="button" class="button" style="margin-left: 20px;">Go</button>
+        </form>
+        
+        <div id="place_for_suggestions" class="table tablesearch-table table-bordered table-striped"></div>
+
+
+        <table id="data-table" class="table tablesearch-table table-bordered table-striped">
+          <tr>
+          {% for i in header1 %}
+            <th>{{i}}</th>  
+            {% endfor %}
+          </tr>
+          {% for i in data1 %}
+          <tr>
+            {% for j in i %}
+            <td>{{j}}</td>  
+            {% endfor %}
+          </tr>
+          {% endfor %}
+        
+      </table>
+
+     <img class="center" src={{url}} alt={{url}} style="max-width: 100%;"/>
+
     </div>
-
-
+    
+    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    
+    <script>
+    $(function(){
+	    $('button').click(function(){
+        var text = $(this).val();
+        var user = $('#inputUsername').val();
+        $.ajax({
+          url: "/suggestions",
+          type: "get",
+          data: {jsdata: user},
+          success: function(response) {
+            $("#place_for_suggestions").html(response);
+          },
+          error: function(xhr) {
+            //Do Something to handle error
+          }
+        });
+      });
+    });
+    </script>
    
 </body>
 

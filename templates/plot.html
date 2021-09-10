@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>jQuery Auto Tables Plugin Example</title>
+  <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.5.2/materia/bootstrap.min.css">
+
+  <!-- jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- popper -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
+
+  <!-- bootstrap -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+  </script>
+
+  <!-- autotables -->
+  <script src="{{url_for('static', filename='auto-tables.js')}}"></script>
+
+  <style>
+    body {
+      background-color: #fafafa;
+    }
+
+    .container {
+      margin: 50px auto;
+    }
+
+    thead th {
+      cursor: pointer;
+    }
+    .button {
+        background-color: #dee2e6; 
+        border: none;
+        color: #444;
+        padding: 5px 8px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 12px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="container">
+
+    <h1 class="text-center mt-5 mb-5">Mestrados FCUP 2021</h1>
+    <!-- <p class="lead text-center">An easy-to-use jQuery plugin for data-rich HTML tables that makes it possible to sort
+      table elements by each column and search/filter table rows based on search keywords.</p> -->
+      <div style="margin-bottom: 10px;">
+        <a class="button" href = "/"> Home </a>
+  
+      </div>
+      
+     <img src={{url}} alt={{name}} style="max-width: 100%;"/>
+
+   
+</body>
+
+</html>

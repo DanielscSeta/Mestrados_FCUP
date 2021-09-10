@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>jQuery Auto Tables Plugin Example</title>
+  <title>{{var}}</title>
   <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.5.2/materia/bootstrap.min.css">
 
@@ -23,7 +23,7 @@
   </script>
 
   <!-- autotables -->
-  <script src="{{url_for('static', filename='auto-tables.js')}}"></script>
+  <!-- <script src="{{url_for('static', filename='auto-tables.js')}}"></script> -->
 
   <style>
     body {
@@ -54,163 +54,92 @@
 <body>
   <div class="container">
 
-    <h1 class="text-center mt-5 mb-5">jQuery Auto Tables Plugin Example</h1>
-    <p class="lead text-center">An easy-to-use jQuery plugin for data-rich HTML tables that makes it possible to sort
-      table elements by each column and search/filter table rows based on search keywords.</p>
+    <h1 class="text-center mt-5 mb-5">{{var}}</h1>
+    <!-- <p class="lead text-center">An easy-to-use jQuery plugin for data-rich HTML tables that makes it possible to sort
+      table elements by each column and search/filter table rows based on search keywords.</p> -->
+    <div style="margin-bottom: 10px;">
+      <a class="button" href = "/"> Home </a>
+
+    </div>
     
-    <a class="button" href = "/"> Home </a>
-    
-    <input type="text" class="form-control mb-3 tablesearch-input" data-tablesearch-table="#data-table"
-      placeholder="Search">
-    
+    <!-- <input type="text" class="form-control mb-3 tablesearch-input" data-tablesearch-table="#data-table"
+      placeholder="Search"> -->
+    <h2>Alunos que ficaram colocados em outros mestrados além do Mestrado em {{var}}:</h2>
     <div class="table-responsive">
 
-        <!-- {% for table in tables %}
-        {{titles[loop.index]}}
-        {{ table|safe }}
+      <!-- <div>This page is at {{var}} </div>
+      <div>{{data}} </div> -->
+
+      <table id="data-table" class="table tablesearch-table table-bordered table-striped">
+
+
+        <!-- {% for i in data %}
+        <li>{{ i }}</li>
         {% endfor %} -->
 
-    
-          
+        {% if data.size == 0%}
+        <tr>
+          <th>Ninguém</th>
+        </tr>
+        {% endif %}
+        {% for i in data %}
+      <tr>
+
+        <th>{{i}}</th>
+
+  </tr>
+      {% endfor %}
+
+  </table>
+      <h2>Alunos que não ficaram colocados neste mestrado, {{var}}, mas ficaram em outros:</h2>
+
+
+      <table id="data-table" class="table tablesearch-table table-bordered table-striped">
+
+
+        <!-- {% for i in data %}
+        <li>{{ i }}</li>
+        {% endfor %} -->
+        <!-- {% for i in test %}
+        <tr>
+          <th>{{i}}</th>
+        </tr>
+        {% endfor %} -->
+        {% if data2.size == 0%}
+        <tr>
+          <th>Ninguém</th>
+        </tr>
+        {% endif %}
+
+        {% for i in data2 %}
+        <tr>
+          <th>{{i}}</th>
+        </tr>
+        {% endfor %}
+
+  </table>
+
+  <h2>Candidatos:</h2>
+
         <table id="data-table" class="table tablesearch-table table-bordered table-striped">
-        <thead>
           <tr>
-            <th>Index</th>
-            <th>First name</th>
-            <th>Last name</th>
-            <th>Email</th>
-            <th>Country</th>
-            <th>Dob</th>
+          {% for i in header %}
+            <th>{{i}}</th>  
+            {% endfor %}
           </tr>
-        </thead>
-        <tbody>
+          {% for i in data3 %}
           <tr>
-            <td>1</td>
-            <td>Dreddy</td>
-            <td>Norgate</td>
-            <td>dnorgate0@java.com</td>
-            <td>Indonesia</td>
-            <td>10/04/1982</td>
+            {% for j in i %}
+            <td>{{j}}</td>  
+            {% endfor %}
           </tr>
-          <tr>
-            <td>2</td>
-            <td>Rodger</td>
-            <td>Parkins</td>
-            <td>rparkins1@imdb.com</td>
-            <td>Brazil</td>
-            <td>02/25/1881</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Udell</td>
-            <td>Treeby</td>
-            <td>utreeby2@xing.com</td>
-            <td>Bolivia</td>
-            <td>01/25/1969</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>Marsiella</td>
-            <td>Ghelarducci</td>
-            <td>mghelarducci3@cpanel.net</td>
-            <td>Japan</td>
-            <td>10/16/1976</td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>Kerwinn</td>
-            <td>Dickey</td>
-            <td>kdickey4@cornell.edu</td>
-            <td>Thailand</td>
-            <td>10/04/1982</td>
-          </tr>
-          <tr>
-            <td>6</td>
-            <td>Rani</td>
-            <td>Meatyard</td>
-            <td>rmeatyard5@twitpic.com</td>
-            <td>China</td>
-            <td>09/10/1898</td>
-          </tr>
-          <tr>
-            <td>7</td>
-            <td>Bianka</td>
-            <td>Spellacy</td>
-            <td>bspellacy6@icq.com</td>
-            <td>United States</td>
-            <td>08/28/1912</td>
-          </tr>
-          <tr>
-            <td>8</td>
-            <td>Dianna</td>
-            <td>Jouaneton</td>
-            <td>djouaneton7@samsung.com</td>
-            <td>Montenegro</td>
-            <td>12/04/1915</td>
-          </tr>
-          <tr>
-            <td>9</td>
-            <td>Emlyn</td>
-            <td>Preator</td>
-            <td>epreator8@chicagotribune.com</td>
-            <td>Indonesia</td>
-            <td>03/13/1954</td>
-          </tr>
-          <tr>
-            <td>10</td>
-            <td>Kellie</td>
-            <td>Leipelt</td>
-            <td>kleipelt9@columbia.edu</td>
-            <td>China</td>
-            <td>12/03/1976</td>
-          </tr>
-          <tr>
-            <td>11</td>
-            <td>Trisha</td>
-            <td>Giorgioni</td>
-            <td>tgiorgionia@cloudflare.com</td>
-            <td>Bosnia and Herzegovina</td>
-            <td>07/30/1961</td>
-          </tr>
-          <tr>
-            <td>12</td>
-            <td>Lyn</td>
-            <td>Gault</td>
-            <td>lgaultb@google.es</td>
-            <td>Portugal</td>
-            <td>03/20/1971</td>
-          </tr>
-          <tr>
-            <td>13</td>
-            <td>Carolan</td>
-            <td>Redgrave</td>
-            <td>credgravec@twitpic.com</td>
-            <td>Argentina</td>
-            <td>09/12/1931</td>
-          </tr>
-          <tr>
-            <td>14</td>
-            <td>Adler</td>
-            <td>Fasset</td>
-            <td>afassetd@sohu.com</td>
-            <td>Albania</td>
-            <td>05/15/1961</td>
-          </tr>
-          <tr>
-            <td>15</td>
-            <td>Lucretia</td>
-            <td>Huxton</td>
-            <td>lhuxtone@pen.io</td>
-            <td>Colombia</td>
-            <td>11/17/1896</td>
-          </tr>
-  
-        </tbody>
+          {% endfor %}
+        
       </table>
     </div>
 
 
-    <script>
+    <!-- <script>
       $(document).ready(function () {
 
         var headers = $('#data-table thead th');
@@ -256,7 +185,7 @@
       } catch (error) {
         console.log(error);
       }
-    </script>
+    </script> -->
 </body>
 
 </html>
