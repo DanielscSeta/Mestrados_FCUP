@@ -49,13 +49,21 @@ def html_table():
 
 @app.route('/<var>', methods=("POST", "GET"))
 def company(var):
-    candidatos = d["df_2_{0}".format(var)]
-    header = candidatos.columns.values.tolist()
-    header.insert(0,candidatos.index.name)
+    colocados = d["df_2_{0}".format(var)]
+    header1 = colocados.columns.values.tolist()
+    header1.insert(0,colocados.index.name)
 
+
+    if d["df_1_{0}".format(var)][1][0] < d["df_1_{0}".format(var)][1][1]:
+        candidatos = d["df_3_{0}".format(var)]
+        header2 = candidatos.columns.values.tolist()
+        header2.insert(0,candidatos.index.name)
+    else:
+         header2=()
+         candidatos=pd.DataFrame()
     # return render_template('simple.html', var=var.replace("_", " "), header = df_sup.columns,  data = lista[var].values)
     return render_template('simple.html', select=Mestrados, var=var, data=table1(var), data2=table2(var),
-     header=header , data3=candidatos.to_records(index=True) )
+     header=header1 , data3=colocados.to_records(index=True), header2=header2, data4=candidatos.to_records(index=True))
 
 
 

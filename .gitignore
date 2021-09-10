@@ -9,7 +9,7 @@ yarn-error.log
 
 backup1.html
 backup2.html
-
+__pycache__
 
 #Python
 .DS_Store

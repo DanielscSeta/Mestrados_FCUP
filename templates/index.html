@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>jQuery Auto Tables Plugin Example</title>
+  <title>Mestrado FCUP</title>
   <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.5.2/materia/bootstrap.min.css">
 
@@ -86,8 +86,28 @@
         
         <div id="place_for_suggestions" class="table tablesearch-table table-bordered table-striped"></div>
 
+        <div class="table-responsive">
 
-        <table id="data-table" class="table tablesearch-table table-bordered table-striped">
+          <table id="data-table" class="table tablesearch-table table-bordered table-striped">
+            <thead><tr>
+              {% for i in header1 %}
+                <th>{{i}}</th>  
+                {% endfor %}
+            </tr></thead>
+        <tbody>
+            
+              {% for i in data1 %}
+              <tr>
+                {% for j in i %}
+                <td>{{j}}</td>  
+                {% endfor %}
+              </tr>
+              {% endfor %}
+        </tbody>
+
+          </table>
+        </div>
+        <!-- <table id="data-table" class="table tablesearch-table table-bordered table-striped">
           <tr>
           {% for i in header1 %}
             <th>{{i}}</th>  
@@ -101,7 +121,7 @@
           </tr>
           {% endfor %}
         
-      </table>
+      </table> -->
 
      <img class="center" src={{url}} alt={{url}} style="max-width: 100%;"/>
 
@@ -130,7 +150,22 @@
       });
     });
     </script>
-   
+   <script>
+
+    $(document).ready(function() {
+
+      var headers = $('#data-table thead th');
+
+      $(headers[5]).attr('data-tablesort-type', 'date');
+
+
+      $('table').not(".tablesort").addClass('tablesort');
+      // $('')
+
+    });
+
+
+  </script>
 </body>
 
 </html>
