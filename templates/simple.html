@@ -64,7 +64,15 @@
     
     <!-- <input type="text" class="form-control mb-3 tablesearch-input" data-tablesearch-table="#data-table"
       placeholder="Search"> -->
+    {%if title == "Modelação Estatística Computacional"%}
+    <h2>Alunos que ficaram colocados em outros mestrados além do Especialização em {{title}}:</h2>
+    {% endif %}
+
+    {%if title != "Modelação Estatística Computacional"%}
     <h2>Alunos que ficaram colocados em outros mestrados além do Mestrado em {{title}}:</h2>
+    {% endif %}
+
+    <!-- <h2>Alunos que ficaram colocados em outros mestrados além do Mestrado em {{title}}:</h2> -->
     <div class="table-responsive">
 
       <!-- <div>This page is at {{var}} </div>
@@ -91,8 +99,14 @@
       {% endfor %}
 
   </table>
+      <!-- <h2>Alunos que não ficaram colocados neste mestrado, {{title}}, mas ficaram em outros:</h2> -->
+      {%if title == "Modelação Estatística Computacional"%}
+      <h2>Alunos que não ficaram colocados nesta especialização, {{title}}, mas ficaram colocados noutros mestrados:</h2>
+      {% endif %}
+  
+      {%if title != "Modelação Estatística Computacional"%}
       <h2>Alunos que não ficaram colocados neste mestrado, {{title}}, mas ficaram em outros:</h2>
-
+      {% endif %}
 
       <table id="data-table" class="table tablesearch-table table-bordered table-striped">
 
