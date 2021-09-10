@@ -216,7 +216,7 @@ def tab_sobrantes():
     
     df1 = pd.DataFrame(frame)
     Sobrantes_df = df1.sort_values('Sobrantes').set_index('Mestrado')
-    return Sobrantes_df
+    # return Sobrantes_df
 
 def stalker(name):
     Mestrados_FCUP = ['Aplicações_em_Biotecnologia_e_Biologia_Sintética','Arquitetura_Paisagista','Astronomia_e_Astrofísica','Avaliação_e_Remediação_de_Solos','Biodiversidade_Genética_e_Evolução', 'Bioinformática_e_Biologia_Computacional', 'Biologia_Celular_e_Molecular', 'Biologia_e_Gestão_da_Qualidade_da_Água', 'Biologia_Funcional_e_Biotecnologia_de_Plantas', 'Bioquímica','Ciência_de_Computadores','Ciência_de_Dados','Ciência_e_Tecnologia_de_Nanomateriais','Ciências_do_Consumo_e_Nutrição','Ciências_e_Tecnologia_do_Ambiente','Deteção_Remota','Ecologia_e_Ambiente','Engenharia_Agronómica','Engenharia_de_Redes_e_Sistemas_Informáticos','Engenharia_de_Viticultura_e_Enologia','Engenharia_Física','Engenharia_Geográfica','Engenharia_Matemática','Ensino_de_Biologia_e_de_Geologia_no_3Ciclo_do_Ensino_Básico_e_no_Ensino_Secundário','Ensino_de_Física_e_de_Química_no_3Ciclo_do_Ensino_Básico_e_no_Ensino_Secundário','Ensino_de_Matemática_no_3_Ciclo_do_Ensino_Básico_e_no_Secundário','Ensino_e_Divulgação_das_Ciências','Física','Física_Médica','Genética_Forense','Geologia','Matemática','Métodos_Avançados_e_Acreditação_em_Análise_Química','Química','Recursos_Biológicos_Aquáticos','Segurança_Informática','Modelação_Estatística_Computacional','Estatística_Computacional_e_Análise_de_Dados']
