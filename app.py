@@ -32,12 +32,17 @@ def suggestions():
 def html_table():
     if request.form.get('comp_select') is not None:
         select = request.form.get('comp_select')
-        return(redirect(select)) 
+        return(redirect(select.replace(' ', '_'))) 
 
     Sobrantes_df = tab_sobrantes()
     header = Sobrantes_df.columns.values.tolist()
     header.insert(0,Sobrantes_df.index.name)
-    return render_template('index.html', data=Mestrados, header1=header, data1=Sobrantes_df.to_records(index=True),
+
+
+    converter = lambda x: x.replace('_', ' ')
+    Mestrados_ = list(map(converter, Mestrados))
+
+    return render_template('index.html', data=Mestrados_, header1=header, data1=Sobrantes_df.to_records(index=True),
     url ='/static/images/new_plot.png')
 
 # @app.route("/test" , methods=['GET', 'POST'])
@@ -62,7 +67,7 @@ def company(var):
          header2=()
          candidatos=pd.DataFrame()
     # return render_template('simple.html', var=var.replace("_", " "), header = df_sup.columns,  data = lista[var].values)
-    return render_template('simple.html', select=Mestrados, var=var, data=table1(var), data2=table2(var),
+    return render_template('simple.html', title=var.replace("_", " "), select=Mestrados, var=var, data=table1(var), data2=table2(var),
      header=header1 , data3=colocados.to_records(index=True), header2=header2, data4=candidatos.to_records(index=True))
 
 

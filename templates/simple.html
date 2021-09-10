@@ -54,7 +54,7 @@
 <body>
   <div class="container">
 
-    <h1 class="text-center mt-5 mb-5">{{var}}</h1>
+    <h1 class="text-center mt-5 mb-5">{{title}}</h1>
     <!-- <p class="lead text-center">An easy-to-use jQuery plugin for data-rich HTML tables that makes it possible to sort
       table elements by each column and search/filter table rows based on search keywords.</p> -->
     <div style="margin-bottom: 10px;">
@@ -64,7 +64,7 @@
     
     <!-- <input type="text" class="form-control mb-3 tablesearch-input" data-tablesearch-table="#data-table"
       placeholder="Search"> -->
-    <h2>Alunos que ficaram colocados em outros mestrados além do Mestrado em {{var}}:</h2>
+    <h2>Alunos que ficaram colocados em outros mestrados além do Mestrado em {{title}}:</h2>
     <div class="table-responsive">
 
       <!-- <div>This page is at {{var}} </div>
@@ -91,7 +91,7 @@
       {% endfor %}
 
   </table>
-      <h2>Alunos que não ficaram colocados neste mestrado, {{var}}, mas ficaram em outros:</h2>
+      <h2>Alunos que não ficaram colocados neste mestrado, {{title}}, mas ficaram em outros:</h2>
 
 
       <table id="data-table" class="table tablesearch-table table-bordered table-striped">
