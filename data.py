@@ -21,11 +21,11 @@ def Nº_Ordem(T):
         T = T[['Nº de ordem','Nomes dos candidatos' ]]
     return T
 
-def Nº_Ordem_2(T):
+def Nº_Ordem_2(T,G):
 
     if len(T.columns) < 3:
 
-        lista_int = np.arange( len(T) )+1+len(T) ## ------------------------
+        lista_int = np.arange( len(T) )+1+len(G) ## ------------------------
         list_string  = map(str, lista_int) 
         lista_numero = list(list_string)
 
@@ -79,7 +79,7 @@ for i in Mestrados:
     #Se o numero de vagas for inferior ao numero de candidatos então:
     if dfs[1][1][0] < dfs[1][1][1]:
         
-        Nº_Ordem_2(dfs[3])
+        Nº_Ordem_2(dfs[3],dfs[2])
         d["df_3_{0}".format(i)] = dfs[3].set_index('Nº de ordem')
         
         # Criar df com os nomes dos candidatos em que cada coluna é o mestrado no qual não foram colocados
